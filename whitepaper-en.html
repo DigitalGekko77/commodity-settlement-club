@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="site.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="site.css">
+<script defer data-domain="pointofart.ru" src="https://plausible.io/js/script.tagged-events.js"></script>
 <title>Commodity Settlement Club — Whitepaper</title>
 <meta name="description" content="English whitepaper for Commodity Settlement Club: problem, architecture, risk controls, pilot framing, and state-institution value.">
 <meta property="og:title" content="Commodity Settlement Club — Whitepaper">
@@ -10,116 +12,153 @@
 <meta property="og:type" content="website">
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="index-en.html" aria-label="Commodity Settlement Club">
-        <span class="brand-mark">CSC</span>
-        <span class="brand-copy">
-          <strong>Commodity Settlement Club</strong>
-          <span>pointofart research stack</span>
-        </span>
-      </a>
-      <nav class="nav" aria-label="Navigation">
-        <a href="index-en.html">Landing</a>
-<a href="whitepaper-en.html">Whitepaper</a>
-<a href="faq-en.html">FAQ</a>
-<a href="index.html" class="nav-cta">RU</a>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <section class="page-hero">
-      <div class="container narrow fade-in visible">
-        <span class="eyebrow">whitepaper / en</span>
-        <h1>Whitepaper for Commodity Settlement Club.</h1>
-        <p>A structured English version for readers who want a coherent presentation of the project without opening the entire archive first.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="faq-en.html">Full description & FAQ</a>
-          <a class="btn btn-secondary" href="CTB-Knowledge-Base-archive.zip" download>Download archive</a>
-          <a class="btn btn-secondary" href="whitepaper.html">RU</a>
-        </div>
-      </div>
-    </section>
 
-<section class="section">
-  <div class="container narrow fade-in">
-    <span class="eyebrow">executive summary</span>
-    <h2 class="section-title">What this project is about</h2>
-    <p class="section-copy">Commodity Settlement Club is a reserve settlement infrastructure for physical commodity trade between friendly jurisdictions. It is designed for corridors where the currently available rails are too expensive, too slow, or too politically fragile.</p>
-    <div class="quote-box"><p>CSC is not trying to become a universal global currency. It is designed as a narrow, governable, institutionally legible settlement layer for real commodity flows.</p></div>
+<header class="site-header">
+<div class="header-inner">
+  <a class="brand" href="index-en.html" aria-label="Commodity Settlement Club">
+    <img src="LOGO.png" alt="CSC" class="brand-mark">
+    <span class="brand-copy">
+      <strong>Commodity<br>Settlement<br>Club</strong>
+      
+    </span>
+  </a>
+  <nav class="nav" aria-label="Navigation">
+    <div class="nav-links-wrap">
+      <a href="index-en.html">Landing</a>
+      <a href="whitepaper-en.html">Whitepaper</a>
+      <a href="faq-en.html">FAQ</a>
+    </div>
+    <a href="CTB-Knowledge-Base-archive.zip" class="nav-cta" download>↓ Download</a>
+    <a href="whitepaper.html" class="lang-toggle">RU</a>
+  </nav>
+</div>
+</header>
+
+<main>
+
+<section class="page-hero">
+<div class="container fade-in visible">
+  <span class="eyebrow">whitepaper / en</span>
+  <h1>Whitepaper for Commodity Settlement Club.</h1>
+  <p class="subtitle">A structured English version for readers who want a coherent presentation of the project without opening the entire archive first.</p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="faq-en.html">Full description & FAQ</a>
+    <a class="btn btn-secondary" href="whitepaper.html">RU</a>
   </div>
+</div>
 </section>
 
 <section class="section">
-  <div class="container fade-in">
-    <span class="eyebrow">core problem</span>
-    <h2 class="section-title">Why the system matters</h2>
-    <div class="grid-3" style="margin-top:2rem;">
-      <article class="card"><h3>Intermediation cost</h3><p>Some corridors rely on expensive third-party banking routes that add cost, delay, and political exposure.</p></article>
-      <article class="card"><h3>FX fragility</h3><p>Direct local-currency clearing often creates asymmetry, arbitrage pressure, and reluctance to hold large counter-positions.</p></article>
-      <article class="card"><h3>Poor state visibility</h3><p>Authorities usually see fragments of the trade chain rather than one integrated commodity-settlement-fiscal picture.</p></article>
-    </div>
-  </div>
+<div class="container fade-in">
+  <span class="eyebrow">executive summary</span>
+  <h2 class="section-title">What this project is about</h2>
+  <p class="section-copy">Commodity Settlement Club is a reserve settlement infrastructure for physical commodity trade between friendly jurisdictions. It is designed for corridors where the currently available rails are too expensive, too slow, or too politically fragile.</p>
+  <div class="quote-box"><p>CSC is not trying to become a universal global currency. It is designed as a narrow, governable, institutionally legible settlement layer for real commodity flows.</p></div>
+</div>
 </section>
 
 <section class="section">
-  <div class="container fade-in">
-    <span class="eyebrow">design principles</span>
-    <h2 class="section-title">Core design principles</h2>
-    <div class="grid-2" style="margin-top:2rem;">
-      <article class="card"><h3>1. Commodity title, not an abstract token</h3><p>The legal anchor must be a digital representation of warehouse-receipt logic, not just a free-floating digital unit.</p></article>
-      <article class="card"><h3>2. Closed-loop settlement</h3><p>The instrument exists inside a specific external trade contract. It is not meant to become an open FX bridge.</p></article>
-      <article class="card"><h3>3. Perfected control before issuance</h3><p>The underlying commodity must be moved into a controlled legal perimeter before tokenization, otherwise double-pledge risk remains fatal.</p></article>
-      <article class="card"><h3>4. Hard debit caps</h3><p>Net positions must be capped, prefunded, and periodically reset. Otherwise the system will replicate the failure mode of earlier clearing regimes.</p></article>
-    </div>
+<div class="container fade-in">
+  <span class="eyebrow">core problem</span>
+  <h2 class="section-title">Why the system matters</h2>
+  <div class="grid-3" style="margin-top:2rem;">
+    <article class="card"><h3>Intermediation cost</h3><p>Some corridors rely on expensive third-party banking routes that add cost, delay, and political exposure.</p></article>
+    <article class="card"><h3>FX fragility</h3><p>Direct local-currency clearing often creates asymmetry, arbitrage pressure, and reluctance to hold large counter-positions.</p></article>
+    <article class="card"><h3>Poor state visibility</h3><p>Authorities usually see fragments of the trade chain rather than one integrated commodity-settlement-fiscal picture.</p></article>
   </div>
+</div>
 </section>
 
 <section class="section">
-  <div class="container fade-in">
-    <span class="eyebrow">state value</span>
-    <h2 class="section-title">Why public institutions may care</h2>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Institution</th><th>Potential value</th></tr></thead>
-        <tbody>
-          <tr><td>Central Bank</td><td>Observable settlement flows, real-time risk visibility, corridor-level oversight, and a reserve commodity-linked rail.</td></tr>
-          <tr><td>Finance Ministry</td><td>Better transparency on trade-linked fiscal flows and lower leakage through opaque intermediation layers.</td></tr>
-          <tr><td>Customs</td><td>A stronger basis for auto-declaration logic and cross-checking shipment, documents, and settlement events.</td></tr>
-          <tr><td>Tax Authority</td><td>More structured transaction data, operator-as-agent logic, and fewer grey zones around commodity-linked cross-border settlements.</td></tr>
-          <tr><td>Banks</td><td>New roles as custodians, liquidity-buffer providers, account infrastructure, and service operators around the pilot perimeter.</td></tr>
-        </tbody>
-      </table>
-    </div>
+<div class="container fade-in">
+  <span class="eyebrow">design principles</span>
+  <h2 class="section-title">Core design principles</h2>
+  <div class="grid-2" style="margin-top:2rem;">
+    <article class="card"><h3>1. Commodity title, not an abstract token</h3><p>The legal anchor must be a digital representation of warehouse-receipt logic, not just a free-floating digital unit.</p></article>
+    <article class="card"><h3>2. Closed-loop settlement</h3><p>The instrument exists inside a specific external trade contract. It is not meant to become an open FX bridge.</p></article>
+    <article class="card"><h3>3. Perfected control before issuance</h3><p>The underlying commodity must be moved into a controlled legal perimeter before tokenization, otherwise double-pledge risk remains fatal.</p></article>
+    <article class="card"><h3>4. Hard debit caps</h3><p>Net positions must be capped, prefunded, and periodically reset. Otherwise the system will replicate the failure mode of earlier clearing regimes.</p></article>
   </div>
+</div>
 </section>
-  </main>
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <span>© 2026 Commodity Settlement Club. Research project.</span>
-      <span style="display:flex; gap:1rem; flex-wrap:wrap;">
-        <a href="faq-en.html">faq</a><a href="whitepaper.html">whitepaper ru</a>
-        <a href="https://bitcoin.pointofart.ru" target="_blank" rel="noopener noreferrer">bitcoin.pointofart.ru</a>
-      </span>
-    </div>
-  </footer>
-  <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.14 });
-document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener('click', (event) => {
-    const href = anchor.getAttribute('href');
-    if (!href || href === '#') return;
-    const target = document.querySelector(href);
-    if (!target) return;
-    event.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+<section class="section">
+<div class="container fade-in">
+  <span class="eyebrow">state value</span>
+  <h2 class="section-title">Why public institutions may care</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Institution</th><th>Potential value</th></tr></thead>
+      <tbody>
+        <tr><td>Central Bank</td><td>Observable settlement flows, real-time risk visibility, corridor-level oversight, and a reserve commodity-linked rail.</td></tr>
+        <tr><td>Finance Ministry</td><td>Better transparency on trade-linked fiscal flows and lower leakage through opaque intermediation layers.</td></tr>
+        <tr><td>Customs</td><td>A stronger basis for auto-declaration logic and cross-checking shipment, documents, and settlement events.</td></tr>
+        <tr><td>Tax Authority</td><td>More structured transaction data, operator-as-agent logic, and fewer grey zones around commodity-linked cross-border settlements.</td></tr>
+        <tr><td>Banks</td><td>New roles as custodians, liquidity-buffer providers, account infrastructure, and service operators around the pilot perimeter.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<section class="section">
+<div class="container fade-in">
+  <span class="eyebrow">pilot</span>
+  <h2 class="section-title">What a realistic PoC looks like</h2>
+  <div class="kicker-list">
+    <div class="kicker-item"><strong>One corridor</strong><span>Russia–India or another corridor with a clear, simple commodity flow.</span></div>
+    <div class="kicker-item"><strong>One base commodity</strong><span>Oil, metals, or another commodity with clear logistics and verifiable title.</span></div>
+    <div class="kicker-item"><strong>Limited perimeter</strong><span>No secondary market, no attempt to scale to a universal currency function immediately.</span></div>
+    <div class="kicker-item"><strong>Measurable criteria</strong><span>Settlement time, flow transparency, manual operation volume, resilience to three critical risk categories.</span></div>
+  </div>
+</div>
+</section>
+
+<section class="section">
+<div class="container fade-in">
+  <span class="eyebrow">conclusion</span>
+  <h2 class="section-title">Why this project deserves further review</h2>
+  <p class="section-copy">CSC occupies a rare niche: it doesn't compete directly with mainstream payment systems, but offers a settlement layer for commodity trade where currency and intermediary solutions are structurally inconvenient. After the v3.2 enhancements, it can already be discussed as a governed pilot rather than an abstract scheme.</p>
+  <div class="action-row">
+    <a class="btn btn-primary" href="faq-en.html">Full description & FAQ</a>
+    <a class="btn btn-secondary" href="CTB-Knowledge-Base-archive.zip" download>Download knowledge base</a>
+  </div>
+</div>
+</section>
+
+<!-- ===== CONTACTS ===== -->
+<section class="contacts-section">
+<div class="container">
+  <div class="eyebrow">Contacts</div>
+  <h2 class="section-title">Get in touch</h2>
+  <div class="contacts-grid fade-in">
+    <div class="contact-card"><span>📧</span><a href="mailto:idkomkov@gmail.com">idkomkov@gmail.com</a></div>
+    <div class="contact-card"><span>💬</span><a href="https://t.me/The_Nameless_One" target="_blank" rel="noopener">@The_Nameless_One</a></div>
+    <div class="contact-card"><span>🐙</span><a href="https://github.com/DigitalGekko77/commodity-settlement-club" target="_blank" rel="noopener">GitHub</a></div>
+  </div>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="footer-inner">
+  <span>© 2026 CSC — Commodity Settlement Club</span>
+  <a href="https://bitcoin.pointofart.ru" target="_blank" rel="noopener">bitcoin.pointofart.ru</a>
+</div>
+</footer>
+
+<script>
+document.querySelectorAll('.accordion-header').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.closest('.accordion').classList.toggle('open');
   });
 });
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
+
 </body>
 </html>
