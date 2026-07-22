@@ -13,7 +13,7 @@
   <header class="nav">
     <a class="brand" href="#top"><span class="mark">C</span><span>CTB <small>v4.0</small></span></a>
     <nav aria-label="Основная навигация">
-      <a href="#model">Модель</a><a href="#risk">Риск</a><a href="#pilot">Пилот</a><a href="#audit">Аудит</a>
+      <a href="#why">Зачем</a><a href="#model">Модель</a><a href="#risk">Риск</a><a href="#pilot">Пилот</a>
     </nav>
     <a class="button compact" href="CTB-Knowledge-Base-v4.0.zip" download>Скачать БЗ</a>
   </header>
@@ -33,6 +33,26 @@
         <div><strong>4</strong><span>раздельных слоя инструмента</span></div>
         <div><strong>0</strong><span>необеспеченных ADC в PoC</span></div>
       </div>
+    </section>
+
+    <section class="section why" id="why">
+      <p class="kicker">Зачем нужен CTB</p>
+      <h2>Международной торговле не всегда нужна новая валюта. Ей нужен хороший клиринг.</h2>
+      <p class="section-lead">Одна внешнеторговая сделка выглядит как отдельный платёж. Но если посмотреть на повторяющиеся обязательства нескольких компаний, часть переводов может оказаться встречной — и её незачем проводить и финансировать в полном объёме.</p>
+
+      <div class="netting-example" aria-label="Упрощённый пример многостороннего неттинга">
+        <div><span>A → B</span><strong>100</strong></div>
+        <div><span>B → C</span><strong>100</strong></div>
+        <div><span>C → A</span><strong>100</strong></div>
+        <p><b>Валовой оборот: 300.</b> Чистая позиция каждого: 0. Реальные суммы и сроки почти никогда не совпадают идеально, но именно исторический replay показывает, какую часть движения денег можно безопасно убрать.</p>
+      </div>
+
+      <div class="why-copy">
+        <p>CTB проверяет юридическую совместимость обязательств, рассчитывает чистую позицию каждого участника и только затем формирует остаточные платежи. Это может снизить пиковую потребность в ликвидности, число операций и количество точек отказа.</p>
+        <p><strong>CTB не является цифровым бартером, новой валютой или способом отменить применимое право.</strong> Это регулируемый расчётный слой над разрешёнными банковскими каналами: eligibility, многосторонний неттинг, риск-лимиты, товарный титул и единый след доказательств.</p>
+      </div>
+
+      <a class="text-link article-link" href="CTB-Knowledge-Base-v4.0.zip" download>Скачать полное обоснование и спецификацию →</a>
     </section>
 
     <section class="section" id="model">

@@ -194,6 +194,46 @@ h3 { line-height: 1.3; }
 .section { border-top: 1px solid var(--line); }
 .section > p:not(.kicker):not(.callout):not(.note) { max-width: 760px; color: var(--muted); }
 
+.section-lead {
+  max-width: 900px !important;
+  margin-bottom: 28px;
+  font-size: 20px;
+  line-height: 1.65;
+}
+
+.netting-example {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  margin: 0 0 26px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--line);
+}
+.netting-example div { padding: 20px 22px; background: var(--surface); }
+.netting-example span { display: block; color: var(--muted); font-size: 14px; }
+.netting-example strong { display: block; margin-top: 4px; color: var(--orange); font-size: 30px; }
+.netting-example p {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 20px 22px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 16px;
+}
+.netting-example b { color: var(--text); }
+
+.why-copy {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 1040px;
+}
+.why-copy p { color: var(--muted); font-size: 17px; }
+.why-copy strong { color: var(--text); }
+.article-link { display: inline-block; margin-top: 4px; color: var(--orange); font-size: 16px; }
+
 .grid { display: grid; gap: 12px; margin-top: 28px; }
 .grid.four { grid-template-columns: repeat(4, 1fr); }
 article {
@@ -294,6 +334,7 @@ footer a { color: var(--orange); text-decoration: none; }
   .nav nav { display: none; }
   .grid.four, .timeline, .metrics { grid-template-columns: 1fr 1fr; }
   .split { grid-template-columns: 1fr; gap: 28px; }
+  .why-copy { grid-template-columns: 1fr; gap: 0; }
 }
 
 @media (max-width: 560px) {
@@ -305,6 +346,8 @@ footer a { color: var(--orange); text-decoration: none; }
   h2 { font-size: 29px; }
   .lead { font-size: 18px; }
   .grid.four, .timeline, .metrics { grid-template-columns: 1fr; }
+  .netting-example { grid-template-columns: 1fr; }
+  .netting-example p { grid-column: 1; }
   .actions { align-items: flex-start; flex-direction: column; }
   .download { padding: 38px 18px; }
   footer { gap: 12px; flex-direction: column; padding-inline: 18px; }
