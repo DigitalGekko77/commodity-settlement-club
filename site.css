@@ -88,6 +88,20 @@ h1, h2, h3 { text-wrap: balance; }
 }
 .nav nav a:hover, .text-link:hover { color: var(--orange); }
 
+.lang-switch {
+  display: inline-grid;
+  place-items: center;
+  min-width: 36px;
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.lang-switch:hover { border-color: rgba(247, 147, 26, 0.55); color: var(--orange); }
+
 .button {
   display: inline-flex;
   align-items: center;
