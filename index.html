@@ -1,380 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CSC — Commodity Settlement Club</title><link rel="stylesheet" href="site.css">
-<script defer data-domain="pointofart.ru" src="https://plausible.io/js/script.tagged-events.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CTB v4 — регулируемый клуб многостороннего товарного клиринга. Архитектура, риск-модель и план проверяемого пилота.">
+  <title>CTB v4 — Commodity Clearing Club</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2310131a'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='Arial' font-weight='700' fill='%23c8ff38'%3EC%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="site.css">
 </head>
 <body>
+  <header class="nav">
+    <a class="brand" href="#top"><span class="mark">C</span><span>CTB <small>v4.0</small></span></a>
+    <nav aria-label="Основная навигация">
+      <a href="#model">Модель</a><a href="#risk">Риск</a><a href="#pilot">Пилот</a><a href="#audit">Аудит</a>
+    </nav>
+    <a class="button compact" href="CTB-Knowledge-Base-v4.0.zip" download>Скачать БЗ</a>
+  </header>
 
-<header class="site-header">
-<div class="header-inner">
-  <a href="#" class="brand">
-    <img src="LOGO.png" alt="CSC" class="brand-mark">
-    <div class="brand-copy">
-      <strong>Commodity<br>Settlement<br>Club</strong>
-    </div>
-  </a>
-  <nav class="nav">
-    <div class="nav-links-wrap">
-      <a href="#pain" data-ru="Проблема" data-en="Problem">Проблема</a>
-      <a href="#solution" data-ru="Решение" data-en="Solution">Решение</a>
-      <a href="#compare" data-ru="Сравнение" data-en="Compare">Сравнение</a>
-      <a href="#state" data-ru="Государству" data-en="For state">Государству</a>
-      <a href="#pilot" data-ru="Пилот" data-en="Pilot">Пилот</a>
-      <a href="overview.html" data-ru="Обзор" data-en="Overview">Обзор</a>
-      <a href="faq.html" data-ru="FAQ" data-en="FAQ">FAQ</a>
-    </div>
-    <a href="CTB-Knowledge-Base-archive.zip" class="nav-cta" download>↓ Скачать</a>
-    <a href="index-en.html" class="lang-toggle">EN</a>
-  </nav>
-</div>
-</header>
+  <main id="top">
+    <section class="hero">
+      <p class="kicker">Commodity clearing infrastructure · research design · 2026</p>
+      <h1>Меньше переводов.<br><span>Больше окончательности.</span></h1>
+      <p class="lead">CTB v4 — регулируемый клуб многостороннего неттинга для реальной торговли. Он связывает расчёт с проверяемым титулом на товар, но не обещает новую валюту, анонимность от регулятора или «санкционную неуязвимость».</p>
+      <div class="actions">
+        <a class="button" href="CTB-Knowledge-Base-v4.0.zip" download>Скачать базу v4.0</a>
+        <a class="text-link" href="https://github.com/DigitalGekko77/commodity-settlement-club">Открыть на GitHub ↗</a>
+      </div>
+      <div class="metrics">
+        <div><strong>3+</strong><span>стороны для проверки netting</span></div>
+        <div><strong>≤2ч</strong><span>цель recovery критических функций</span></div>
+        <div><strong>4</strong><span>раздельных слоя инструмента</span></div>
+        <div><strong>0</strong><span>необеспеченных ADC в PoC</span></div>
+      </div>
+    </section>
 
-<!-- ===== HERO ===== -->
-<section class="page-hero">
-<div class="container">
-  <div class="eyebrow" data-ru="Товарный клиринг-клуб v3.3" data-en="Commodity clearing club v3.3">Товарный клиринг-клуб v3.3</div>
-  <h1><span data-ru="Расчётная инфраструктура для санкционных коридоров" data-en="Settlement infrastructure for sanctioned corridors">Расчётная инфраструктура для санкционных коридоров</span></h1>
-  <p class="subtitle" data-ru="Не замена SWIFT. Не крипта. Не обход санкций. Узкий расчётный слой для товарных потоков, который автоматически начисляет пошлины и работает без единого эмитента." data-en="Not a SWIFT replacement. Not crypto. Not sanctions evasion. A narrow settlement layer for commodity flows that automatically accrues duties and operates without a single issuer.">Не замена SWIFT. Не крипта. Не обход санкций. Узкий расчётный слой для товарных потоков, который автоматически начисляет пошлины и работает без единого эмитента.</p>
-  <div class="hero-actions">
-    <a href="#solution" class="btn btn-primary" data-ru="Как это работает" data-en="How it works">Как это работает</a>
-    <a href="CTB-Knowledge-Base-archive.zip" class="btn btn-dl" data-ru="Скачать базу (328KB)" data-en="Download base (328KB)">Скачать базу (328KB)</a>
-  </div>
-</div>
-</section>
+    <section class="section" id="model">
+      <p class="kicker">01 · Исправленная модель</p>
+      <h2>Не один «товарный токен», а четыре ясных объекта</h2>
+      <div class="grid four">
+        <article><b>CBU</b><h3>Единица оценки</h3><p>Нормализует цены, лимиты и неттинг. Не является деньгами, титулом или обещанием товара.</p></article>
+        <article><b>PSB</b><h3>Prefunded balance</h3><p>Сегрегированный расчётный остаток для короткого цикла внутри клуба.</p></article>
+        <article><b>ADC</b><h3>Товарное требование</h3><p>Выпускается только после проверки контроля над конкретной партией.</p></article>
+        <article><b>ETR</b><h3>Документ титула</h3><p>Электронный коносамент или складской документ, если его признаёт применимое право.</p></article>
+      </div>
+      <p class="callout">Главное исправление v4: будущая добыча и производственная мощность больше не выдаются за складское свидетельство. До появления проверенного товара существует escrow и договорное обязательство, но не ADC.</p>
+    </section>
 
-<div class="container">
+    <section class="section split" id="risk">
+      <div>
+        <p class="kicker">02 · Контролируемый риск</p>
+        <h2>Убыток не прячется в общем фонде</h2>
+        <p>Маржа зависит от волатильности, ликвидационного горизонта, basis, freight, quality и концентрации. Hard debit caps не дают профицитной стороне кредитовать дефицитную бесконечно.</p>
+      </div>
+      <ol class="waterfall">
+        <li><span>01</span>Ресурсы нарушителя</li><li><span>02</span>Гарантия или действующий полис</li><li><span>03</span>Капитал оператора</li><li><span>04</span>Prefunded mutual layer с cap</li><li><span>05</span>Согласованные recovery tools</li>
+      </ol>
+    </section>
 
-<!-- ===== STATS ===== -->
-<div class="stat-grid fade-in">
-  <div class="stat">
-    <strong>0.3%</strong>
-  </div>
-  <div class="stat">
-    <strong>&lt;72ч</strong>
-  </div>
-  <div class="stat green">
-    <strong>+$2.5млрд</strong>
-  </div>
-  <div class="stat">
-    <strong>120+</strong>
-  </div>
-</div>
-</div>
+    <section class="section" id="pilot">
+      <p class="kicker">03 · Пилот без нарисованного успеха</p>
+      <h2>Сначала replay данных, затем деньги</h2>
+      <div class="timeline">
+        <div><span>Gate 0</span><h3>Спрос</h3><p>Исторический graph обязательств, 3 anchor participants, willingness to pay.</p></div>
+        <div><span>Gate 1</span><h3>Право</h3><p>Finality, netting, insolvency, title, tax, data и licences.</p></div>
+        <div><span>Gate 2</span><h3>Риск</h3><p>Маржа, prefunding, caps, waterfall и подписанные ресурсы.</p></div>
+        <div><span>Gate 3</span><h3>Live</h3><p>Shadow mode → ограниченный live pilot → independent review.</p></div>
+      </div>
+      <p class="note">Россия–Индия, Бразилия–Индия и Индия–ОАЭ — кандидаты. Побеждает не геополитический лозунг, а scorecard: netting potential, участники, право, титул, rails и risk appetite.</p>
+    </section>
 
-<!-- ===== 1. PAIN ===== -->
-<section class="section" id="pain">
-<div class="container">
-  <div class="eyebrow" data-ru="Проблема" data-en="The problem">Проблема</div>
-  <h2 class="section-title" data-ru="Система международных расчётов сломана" data-en="The international settlement system is broken">Система международных расчётов сломана</h2>
-  <p class="section-copy" data-ru="Каждое существующее решение страдает одним или несколькими критическими недостатками:" data-en="Every existing solution suffers from one or more critical flaws:">Каждое существующее решение страдает одним или несколькими критическими недостатками:</p>
-  <div class="grid-3 fade-in">
-    <div class="card card-red">
-      <h3 data-ru="SWIFT / Банки" data-en="SWIFT / Banks">SWIFT / Банки</h3>
-      <p data-ru="1–3% комиссия. 7–14 дней. Зависимость от корреспондентских счетов в долларах. Любая сделка может быть заблокирована из Вашингтона." data-en="1–3% fee. 7–14 days. Dependency on USD correspondent accounts. Any deal can be blocked from Washington.">1–3% комиссия. 7–14 дней. Зависимость от корреспондентских счетов в долларах. Любая сделка может быть заблокирована из Вашингтона.</p>
-    </div>
-    <div class="card card-red">
-      <h3 data-ru="CIPS / СПФС" data-en="CIPS / SPFS">CIPS / СПФС</h3>
-      <p data-ru="Альтернативные платёжные рельсы — но всё ещё в фиате. Юань зависит от решений НБК. Инфляция, девальвация, политический риск ЦБ-эмитента." data-en="Alternative payment rails — but still in fiat. Yuan depends on PBOC decisions. Inflation, devaluation, political risk of issuing CB.">Альтернативные платёжные рельсы — но всё ещё в фиате. Юань зависит от решений НБК. Инфляция, девальвация, политический риск ЦБ-эмитента.</p>
-    </div>
-    <div class="card card-red">
-      <h3 data-ru="mBridge / CBDC" data-en="mBridge / CBDC">mBridge / CBDC</h3>
-      <p data-ru="Цифровая версия fiat-валют. Кто контролирует эмиссию — получает сеньораж. Единый эмитент = единая точка давления." data-en="Digital versions of fiat currencies. Whoever controls emission gets seigniorage. Single issuer = single point of pressure.">Цифровая версия fiat-валют. Кто контролирует эмиссию — получает сеньораж. Единый эмитент = единая точка давления.</p>
-    </div>
-    <div class="card card-red">
-      <h3 data-ru="Криптовалюты" data-en="Cryptocurrencies">Криптовалюты</h3>
-      <p data-ru="Волатильность. «Окрашивание» монет через chainalysis. Блокировка на уровне бирж. Неприемлемы для межгосрасчётов." data-en="Volatility. Coin tainting via chainalysis. Exchange-level blocking. Unsuitable for interstate settlements.">Волатильность. «Окрашивание» монет через chainalysis. Блокировка на уровне бирж. Неприемлемы для межгосрасчётов.</p>
-    </div>
-    <div class="card card-red">
-      <h3 data-ru="Золотые токены" data-en="Gold tokens">Золотые токены</h3>
-      <p data-ru="Физическое хранилище. Дорогая логистика. Доверие к эмитенту. Политическая уязвимость. Венесуэла и вольфрамовые слитки." data-en="Physical storage. Expensive logistics. Trust in issuer. Political vulnerability.">Физическое хранилище. Дорогая логистика. Доверие к эмитенту. Политическая уязвимость.</p>
-    </div>
-    <div class="card card-red">
-      <h3 data-ru="Прямой бартер" data-en="Direct barter">Прямой бартер</h3>
-      <p data-ru="Требует совпадения потребностей в один момент. Не масштабируется. Нет клиринга. Нет верификации поставки." data-en="Requires matching needs at one moment. Doesn't scale. No clearing. No delivery verification.">Требует совпадения потребностей в один момент. Не масштабируется. Нет клиринга. Нет верификации поставки.</p>
-    </div>
-  </div>
-</div>
-</section>
+    <section class="section split" id="audit">
+      <div>
+        <p class="kicker">04 · Что взято из аудита</p>
+        <h2>Сильные идеи — да. Футуризм вместо обеспечения — нет.</h2>
+      </div>
+      <div class="verdicts">
+        <p><strong>Принято:</strong> multilateral netting KPI, dynamic margin, default waterfall, tariff protocol, selective disclosure, threat model, OpenAPI, AI anomaly detection.</p>
+        <p><strong>Изменено:</strong> settlement-at-market, oracle 80/20, выбор коридора, post-quantum roadmap.</p>
+        <p><strong>Отклонено:</strong> AALI в эмиссии, автоматическая конвертация долга в облигации, универсальный MARF, compute как 5% обязательной корзины.</p>
+      </div>
+    </section>
 
-<hr class="divider">
+    <section class="download">
+      <p class="kicker">Полная модель, включая слабые места</p>
+      <h2>Скачайте базу знаний v4.0</h2>
+      <p>Архитектура, risk model, standards, stress tests, audit decisions, PoC scorecard и API contract. Предыдущие документы сохранены и явно помечены там, где их заменил v4.</p>
+      <a class="button light" href="CTB-Knowledge-Base-v4.0.zip" download>CTB-Knowledge-Base-v4.0.zip</a>
+    </section>
+  </main>
 
-<!-- ===== 2. SOLUTION ===== -->
-<section class="section" id="solution">
-<div class="container">
-  <div class="eyebrow" data-ru="Решение" data-en="Solution">Решение</div>
-  <h2 class="section-title" data-ru="Товарный клиринг-клуб" data-en="Commodity Settlement Club">Товарный клиринг-клуб</h2>
-  <p class="section-copy" data-ru="Каждая страна выпускает товарный токен, привязанный к золоту как расчётной единице. Токен гасится реальным экспортным товаром — не золотом и не валютой. Обеспечение — производственный потенциал страны." data-en="Each country issues a commodity token pegged to gold as a unit of account. The token is redeemed with real export commodity. Collateral is the country's production capacity.">Каждая страна выпускает товарный токен, привязанный к золоту как расчётной единице. Токен гасится реальным экспортным товаром — не золотом и не валютой. Обеспечение — производственный потенциал страны.</p>
-
-  <div class="grid-3 fade-in">
-    <div class="card">
-      <h3 data-ru="Без единого эмитента" data-en="No single issuer">Без единого эмитента</h3>
-      <p data-ru="Каждая страна эмитирует только свои токены. Нет сеньоража, нет точки давления." data-en="Each country only issues its own tokens. No seigniorage, no pressure point.">Каждая страна эмитирует только свои токены. Нет сеньоража, нет точки давления.</p>
-    </div>
-    <div class="card">
-      <h3 data-ru="Товарное обеспечение" data-en="Commodity-backed">Товарное обеспечение</h3>
-      <p data-ru="Не золотой запас, не валютный резерв — производственная мощь. Нефть, газ, металлы, зерно." data-en="Not gold reserves, not forex — production capacity. Oil, gas, metals, grain.">Не золотой запас, не валютный резерв — производственная мощь. Нефть, газ, металлы, зерно.</p>
-    </div>
-    <div class="card">
-      <h3 data-ru="Автоматический клиринг" data-en="Automatic clearing">Автоматический клиринг</h3>
-      <p data-ru="Смарт-контракт находит встречные требования и гасит их. Россия → Китай → Индия → Россия — один клик." data-en="Smart contract finds offsetting claims and settles them. Russia → China → India → Russia — one click.">Смарт-контракт находит встречные требования и гасит их. Россия → Китай → Индия → Россия — один клик.</p>
-    </div>
-  </div>
-
-  <blockquote>
-    <p data-ru="Ключевое отличие: CIPS и mBridge меняют рельсы, но не меняют валюту. CSC меняет саму природу расчётного инструмента — от fiat-долга к товарному праву требования." data-en="Key difference: CIPS and mBridge change the rails but not the currency. CSC changes the nature of the settlement instrument itself — from fiat debt to commodity claim.">Ключевое отличие: CIPS и mBridge меняют рельсы, но не меняют валюту. CSC меняет саму природу расчётного инструмента — от fiat-долга к товарному права требования.</p>
-  </blockquote>
-</div>
-</section>
-
-<hr class="divider">
-
-<!-- ===== 3. COMPARISON ===== -->
-<section class="section" id="compare">
-<div class="container">
-  <div class="eyebrow" data-ru="Сравнение" data-en="Comparison">Сравнение</div>
-  <h2 class="section-title" data-ru="CSC vs существующие системы" data-en="CSC vs existing systems">CSC vs существующие системы</h2>
-
-  <!-- Table 1: Features -->
-  <div class="table-wrap fade-in">
-    <table>
-      <thead>
-        <tr>
-          <th data-ru="Критерий" data-en="Criteria">Критерий</th>
-          <th>SWIFT</th>
-          <th data-ru="Крипто" data-en="Crypto">Крипто</th>
-          <th>CBDC</th>
-          <th data-ru="Золото" data-en="Gold">Золото</th>
-          <th>mBridge</th>
-          <th>CIPS</th>
-          <th style="color:var(--color-primary)">CSC</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-ru="Без единого эмитента" data-en="No single issuer">Без единого эмитента</td>
-          <td class="cross">×</td><td class="check">✓</td><td class="cross">×</td><td class="cross">×</td><td class="cross">×</td><td class="cross">×</td><td class="highlight check"><strong>✓</strong></td>
-        </tr>
-        <tr>
-          <td data-ru="Защита от санкций" data-en="Sanction-proof">Защита от санкций</td>
-          <td class="cross">×</td><td class="partial">~</td><td class="cross">×</td><td class="cross">×</td><td class="partial">~</td><td class="partial">~</td><td class="highlight check"><strong>✓</strong></td>
-        </tr>
-        <tr>
-          <td data-ru="Без инфляции" data-en="Inflation-free">Без инфляции</td>
-          <td class="cross">×</td><td class="check">✓</td><td class="cross">×</td><td class="check">✓</td><td class="cross">×</td><td class="cross">×</td><td class="highlight check"><strong>✓</strong></td>
-        </tr>
-        <tr>
-          <td data-ru="Без золотых резервов" data-en="No gold reserves needed">Без золотых резервов</td>
-          <td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="cross">×</td><td class="check">✓</td><td class="check">✓</td><td class="highlight check"><strong>✓</strong></td>
-        </tr>
-        <tr>
-          <td data-ru="Товарное обеспечение" data-en="Commodity-backed">Товарное обеспечение</td>
-          <td class="cross">×</td><td class="cross">×</td><td class="cross">×</td><td class="cross">×</td><td class="cross">×</td><td class="cross">×</td><td class="highlight check"><strong>✓</strong></td>
-        </tr>
-        <tr>
-          <td data-ru="Автоклиринг" data-en="Auto-clearing">Автоклиринг</td>
-          <td class="cross">×</td><td class="cross">×</td><td class="partial">~</td><td class="cross">×</td><td class="partial">~</td><td class="cross">×</td><td class="highlight check"><strong>✓</strong></td>
-        </tr>
-        <tr>
-          <td data-ru="Автопошлины" data-en="Auto duties">Автопошлины</td>
-          <td class="cross">×</td><td class="cross">×</td><td class="cross">×</td><td class="cross">×</td><td class="cross">×</td><td class="cross">×</td><td class="highlight check"><strong>✓</strong></td>
-        </tr>
-        <tr>
-          <td data-ru="Интеграция с ФТС/ФНС" data-en="Customs/tax integration">Интеграция с ФТС/ФНС</td>
-          <td class="cross">×</td><td class="cross">×</td><td class="cross">×</td><td class="cross">×</td><td class="cross">×</td><td class="cross">×</td><td class="highlight check"><strong>✓</strong></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Table 2: Metrics -->
-  <div class="table-wrap fade-in" style="margin-top:var(--space-5)">
-    <table>
-      <thead>
-        <tr>
-          <th></th>
-          <th data-ru="Банк-посредник" data-en="Bank intermediary">Банк-посредник</th>
-          <th data-ru="Клиринг" data-en="Clearing">Клиринг</th>
-          <th data-ru="Бартер" data-en="Barter">Бартер</th>
-          <th style="color:var(--color-primary)">CSC</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-ru="Комиссия" data-en="Fee">Комиссия</td>
-          <td>1–3%</td><td>0.5–1%</td><td>0%</td><td class="highlight"><strong>0.3%</strong></td>
-        </tr>
-        <tr>
-          <td data-ru="Время" data-en="Time">Время</td>
-          <td>7–14 дней</td><td>3–5 дней</td><td data-ru="по логистике" data-en="logistics-based">по логистике</td><td class="highlight"><strong>&lt;72 часа</strong></td>
-        </tr>
-        <tr>
-          <td data-ru="Валютный риск" data-en="FX risk">Валютный риск</td>
-          <td class="cross">×</td><td class="partial">~</td><td class="check">✓</td><td class="highlight check"><strong>✓</strong></td>
-        </tr>
-        <tr>
-          <td data-ru="Санкционный риск" data-en="Sanction risk">Санкционный риск</td>
-          <td class="cross">×</td><td class="partial">~</td><td class="check">✓</td><td class="highlight check"><strong>✓</strong></td>
-        </tr>
-        <tr>
-          <td data-ru="Масштабируемость" data-en="Scalability">Масштабируемость</td>
-          <td data-ru="Ограничена" data-en="Limited">Ограничена</td><td data-ru="Ограничена" data-en="Limited">Ограничена</td><td class="cross">×</td><td class="highlight check"><strong>✓</strong></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-</section>
-
-<hr class="divider">
-
-<!-- ===== 4. STATE BENEFITS ===== -->
-<section class="section" id="state">
-<div class="container">
-  <div class="eyebrow" data-ru="Выгоды" data-en="Benefits">Выгоды</div>
-  <h2 class="section-title" data-ru="Что получает государство" data-en="What the state gets">Что получает государство</h2>
-  <p class="section-copy" data-ru="Система не обходит государство — она даёт ему инструменты, которых у него никогда не было. Каждый антагонист получает роль." data-en="The system doesn't bypass the state — it gives it tools it never had. Every antagonist gets a role.">Система не обходит государство — она даёт ему инструменты, которых у него никогда не было. Каждый антагонист получает роль.</p>
-  <div class="grid-3 fade-in">
-    <div class="card card-green">
-      <h3 data-ru="Банк России" data-en="Central Bank">Банк России</h3>
-      <p data-ru="Надзор за ОТП как НКО. Ломбардное кредитование под токены. Наблюдатель с veto. Контур изолирован от доллара." data-en="Oversight of OTP as NPO. Lombard lending against tokens. Observer with veto. USD-isolated circuit.">Надзор за ОТП как НКО. Ломбардное кредитование под токены. Наблюдатель с veto. Контур изолирован от доллара.</p>
-    </div>
-    <div class="card card-green">
-      <h3 data-ru="Минфин" data-en="Ministry of Finance">Минфин</h3>
-      <p data-ru="+$2.5–5 млрд/год в бюджет при масштабировании на нефтяной коридор Россия–Индия. Автоматическое начисление пошлин." data-en="+$2.5–5B/year budget revenue at scale on Russia–India oil corridor. Automatic duty accrual.">+$2.5–5 млрд/год в бюджет при масштабировании на нефтяной коридор Россия–Индия. Автоматическое начисление пошлин.</p>
-    </div>
-    <div class="card card-green">
-      <h3 data-ru="ФТС" data-en="Customs">ФТС</h3>
-      <p data-ru="Каждый токен = таможенная декларация. Интеграция с таможенными системами. Прозрачность потоков в реальном времени." data-en="Each token = customs declaration. Customs system integration. Real-time flow transparency.">Каждый токен = таможенная декларация. Интеграция с таможенными системами. Прозрачность потоков в реальном времени.</p>
-    </div>
-    <div class="card card-green">
-      <h3 data-ru="ФНС" data-en="Tax Service">ФНС</h3>
-      <p data-ru="ОТП как налоговый агент. Автоначисление НДС и налога на прибыль при погашении токена." data-en="OTP as tax agent. Automatic VAT and income tax accrual on token redemption.">ОТП как налоговый агент. Автоначисление НДС и налога на прибыль при погашении токена.</p>
-    </div>
-    <div class="card card-green">
-      <h3 data-ru="Минэкономразвития" data-en="Economy Ministry">Минэкономразвития</h3>
-      <p data-ru="Аналитика товарных потоков. Наблюдатель с veto по номенклатуре. Контроль стратегического экспорта." data-en="Commodity flow analytics. Observer with veto on nomenclature. Strategic export control.">Аналитика товарных потоков. Наблюдатель с veto по номенклатуре. Контроль стратегического экспорта.</p>
-    </div>
-    <div class="card card-green">
-      <h3 data-ru="Силовики" data-en="Security services">Силовики</h3>
-      <p data-ru="Прозрачность потоков = больше контроля за стратегическим экспортом. Каждая транзакция записана в блокчейн." data-en="Flow transparency = more control over strategic exports. Every transaction recorded on blockchain.">Прозрачность потоков = больше контроля за стратегическим экспортом. Каждая транзакция записана в блокчейн.</p>
-    </div>
-  </div>
-</div>
-</section>
-
-<hr class="divider">
-
-<!-- ===== 5. PILOT ===== -->
-<section class="section" id="pilot">
-<div class="container">
-  <div class="eyebrow" data-ru="Пилот" data-en="Pilot">Пилот</div>
-  <h2 class="section-title" data-ru="Фаза 0 — Proof of Concept" data-en="Phase 0 — Proof of Concept">Фаза 0 — Proof of Concept</h2>
-  <div class="pilot-grid fade-in">
-    <div class="pilot-item">
-      <strong data-ru="Коридор" data-en="Corridor">Коридор</strong>
-      <small data-ru="1 партнёр, 6 месяцев" data-en="1 partner, 6 months">1 партнёр, 6 месяцев</small>
-    </div>
-    <div class="pilot-item">
-      <strong data-ru="Товар" data-en="Commodity">Товар</strong>
-      <small data-ru="Urals, поставки через ОТП" data-en="Urals, deliveries via OTP">Urals, поставки через ОТП</small>
-    </div>
-    <div class="pilot-item">
-      <strong data-ru="Объём" data-en="Volume">Объём</strong>
-      <span>$2M</span>
-      <small data-ru="10–20 сделок" data-en="10–20 transactions">10–20 сделок</small>
-    </div>
-    <div class="pilot-item">
-      <strong data-ru="Технология" data-en="Technology">Технология</strong>
-      <span>Fabric</span>
-      <small data-ru="2 ноды (ОТП-Р + ОТП-И)" data-en="2 nodes (OTP-R + OTP-I)">2 ноды (ОТП-Р + ОТП-И)</small>
-    </div>
-    <div class="pilot-item">
-      <strong data-ru="Результат" data-en="Result">Результат</strong>
-      <small data-ru="Скорость, стоимость, надёжность" data-en="Speed, cost, reliability">Скорость, стоимость, надёжность</small>
-    </div>
-  </div>
-</div>
-</section>
-
-<hr class="divider">
-
-<!-- ===== 6. DOCUMENTS ===== -->
-<section class="section" id="docs">
-<div class="container">
-  <div class="eyebrow" data-ru="Документы" data-en="Documents">Документы</div>
-  <h2 class="section-title" data-ru="Материалы проекта" data-en="Project materials">Материалы проекта</h2>
-  <div class="doc-grid fade-in">
-    <a href="overview.html" class="doc-card">
-      <span class="doc-label" data-ru="Обзор" data-en="Overview">Обзор</span>
-      <span class="doc-title" data-ru="Обзор системы" data-en="System overview">Обзор системы</span>
-      <span class="doc-desc" data-ru="Полное описание: проблема, концепция, архитектура, протоколы, экономика ОТП, риски." data-en="Full description: problem, concept, architecture, protocols, OTP economics, risks.">Полное описание: проблема, концепция, архитектура, протоколы, экономика ОТП, риски.</span>
-    </a>
-    <a href="whitepaper.html" class="doc-card">
-      <span class="doc-label">Whitepaper</span>
-      <span class="doc-title" data-ru="White Paper" data-en="White Paper">White Paper</span>
-      <span class="doc-desc" data-ru="Полное описание концепции: архитектура, протоколы, экономика ОТП, дорожная карта." data-en="Full concept: architecture, protocols, OTP economics, roadmap.">Полное описание концепции: архитектура, протоколы, экономика ОТП, дорожная карта.</span>
-    </a>
-    <a href="faq.html" class="doc-card">
-      <span class="doc-label">FAQ</span>
-      <span class="doc-title" data-ru="Частые вопросы" data-en="Frequently asked">Частые вопросы</span>
-      <span class="doc-desc" data-ru="Юридика, риски, управление, технические детали." data-en="Legal, risks, governance, technical details.">Юридика, риски, управление, технические детали.</span>
-    </a>
-    <a href="CTB-Knowledge-Base-archive.zip" class="doc-card doc-card--dl">
-      <span class="doc-label" data-ru="Полная база · ZIP" data-en="Full base · ZIP">Полная база · ZIP</span>
-      <span class="doc-title" data-ru="CTB-Knowledge-Base (120+ файлов)" data-en="CTB-Knowledge-Base (120+ files)">CTB-Knowledge-Base (120+ файлов)</span>
-      <span class="doc-desc" data-ru="Скачайте полный архив и исследуйте систему с помощью любой AI-модели любой сложности. 16 разделов, 11 стресс-тестов, юридический анализ, unit economics." data-en="Download the full archive and explore the system with any AI model of any complexity. 16 sections, 11 stress tests, legal analysis, unit economics.">Скачайте полный архив и исследуйте систему с помощью любой AI-модели любой сложности. 16 разделов, 11 стресс-тестов, юридический анализ, unit economics.</span>
-    </a>
-  </div>
-</div>
-</section>
-
-</div>
-
-
-<!-- ===== КОНТАКТЫ ===== -->
-<section class="contacts-section" id="contacts">
-<div class="container">
-  <div class="eyebrow" data-ru="Контакты" data-en="Contacts">Контакты</div>
-  <h2 class="section-title" data-ru="Связаться" data-en="Get in touch">Связаться</h2>
-  <div class="contacts-grid fade-in">
-    <div class="contact-card">
-      <span>📧</span>
-      <a href="mailto:idkomkov@gmail.com">idkomkov@gmail.com</a>
-    </div>
-    <div class="contact-card">
-      <span>💬</span>
-      <a href="https://t.me/The_Nameless_One" target="_blank" rel="noopener">@The_Nameless_One</a>
-    </div>
-    <div class="contact-card">
-      <span>🐙</span>
-      <a href="https://github.com/DigitalGekko77/commodity-settlement-club" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer class="site-footer">
-<div class="footer-inner">
-  <span>© 2026 CSC — Commodity Settlement Club</span>
-  <a href="https://bitcoin.pointofart.ru" target="_blank" rel="noopener">bitcoin.pointofart.ru</a>
-</div>
-</footer>
-
-<script>
-document.querySelectorAll('.accordion-header').forEach(btn => {
-  btn.addEventListener('click', () => {
-    btn.closest('.accordion').classList.toggle('open');
-  });
-});
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
-
+  <footer><span>CTB v4.0 · Игорь Комков · 22 июля 2026</span><a href="mailto:idkomkov@gmail.com">idkomkov@gmail.com</a></footer>
 </body>
 </html>
